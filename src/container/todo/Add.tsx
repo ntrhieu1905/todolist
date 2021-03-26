@@ -58,7 +58,7 @@ const AddTodo: React.FC = () => {
                   render={({ onChange, value }) => (
                     <DatePicker
                       className="form-control"
-                      dateFormat="yyyy/MM/dd"
+                      dateFormat="dd-MM-yyyy"
                       onChange={onChange}
                       selected={value}
                     />
@@ -76,7 +76,7 @@ const AddTodo: React.FC = () => {
                   render={({ onChange, value }) => (
                     <DatePicker
                       className="form-control"
-                      dateFormat="yyyy/MM/dd"
+                      dateFormat="dd-MM-yyyy"
                       onChange={onChange}
                       selected={value}
                     />

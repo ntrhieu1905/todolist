@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import AddTodo from './container/todo/addTodo';
+import AddTodo from './container/todo/Add';
+import ListToggle from './container/todolist/Toggle';
 
 const App: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ const App: React.FC = () => {
             <AddTodo />
           </Col>
           <Col md={5}>
-            <h5>List toggle</h5>
+            <ListToggle />
           </Col>
         </Row>
       </Container>
