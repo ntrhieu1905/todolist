@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import AddTodo from './container/todo/Add';
-import ListToggle from './container/todolist/Toggle';
+import ListToggle from './container/todo/Toggle';
 
 const App: React.FC = () => {
   return (

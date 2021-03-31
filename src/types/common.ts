@@ -4,7 +4,7 @@ export enum DelFlg {
 }
 
 export interface commonField {
-  id: number;
+  id: string;
   delFlg?: DelFlg;
   createdAt?: Date;
   updatedAt?: Date;
