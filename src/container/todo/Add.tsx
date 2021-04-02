@@ -1,27 +1,26 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Card, Form, Row, Col, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Controller, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 import { AddTodoType } from '../../types/todo';
-import { addTodo } from './Todo.actions';
 
-const AddTodo: React.FC = () => {
+type Props = {
+  saveTodo: (todo: AddTodoType) => void
+}
+
+const AddTodo: React.FC<Props> = ({ saveTodo }) => {
   const { control, register, handleSubmit } = useForm<AddTodoType>();
-  
-  const dispatch= useDispatch();
 
-  const saveTodo = useCallback(
-    (todo: AddTodoType) => dispatch(addTodo(todo)),
-    [dispatch]
-  );
+  const addTodo = (data: AddTodoType) => {
+    saveTodo(data);
+  }
 
   return (
     <>
       <Card>
         <h5 className="text-center mt-3">Add Todo</h5>
         <Card.Body>
-          <Form onSubmit={handleSubmit(saveTodo)}>
+          <Form onSubmit={handleSubmit(addTodo)}>
             <Form.Group as={Row} controlId="title">
               <Form.Label column sm="2">
                 Title

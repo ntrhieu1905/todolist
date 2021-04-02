@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import AddTodo from './container/todo/Add';
 import ListToggle from './container/todo/Toggle';
 
 const App: React.FC = () => {
@@ -17,14 +16,7 @@ const App: React.FC = () => {
             </ul>
           </Col>
         </Row>
-        <Row>
-          <Col md={7}>
-            <AddTodo />
-          </Col>
-          <Col md={5}>
-            <ListToggle />
-          </Col>
-        </Row>
+        <ListToggle />
       </Container>
     </div>
   );

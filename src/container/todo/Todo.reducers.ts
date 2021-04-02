@@ -1,26 +1,28 @@
 import { 
+  ActionTypes,
   ITodoMain,
   AddTodoActionType
 } from '../../types/todo';
-import { TodoActionTypes } from './Todo.actions';
 import { generatedId } from '../../utils/common';
 
-export type TodoState = Readonly<{
-  todos: ITodoMain[]
-}>;
+export interface TodoState {
+  todos: ITodoMain[],
+  isLoading: boolean
+}
 
 const initialState: TodoState = {
   todos: [],
+  isLoading: true
 }
 
-export const todoReducer = (state: TodoState = initialState, action: AddTodoActionType) => {
+export const todoReducer = (state: TodoState = initialState, action: AddTodoActionType): TodoState => {
   switch (action.type) {
-    case TodoActionTypes.ADD:
+    case ActionTypes.ADD:
       const dataTodo = {
         ...action.payload,
         id: generatedId()
-      }
-      return { ...state, todos: [dataTodo] };
+      };
+      return { ...state, isLoading: false, todos: [...state.todos, dataTodo] };
     default:
       return state;
   }

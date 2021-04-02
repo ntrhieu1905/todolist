@@ -36,6 +36,6 @@ export type DeleteTodoType = Pick<ITodoMain, 'id' | 'delFlg' | 'deletedAt'>;
 
 export interface IAddTodoAction {
   type: ActionTypes.ADD;
-  payload: AddTodoType
+  payload: AddTodoType;
 }
 export type AddTodoActionType = IAddTodoAction;
