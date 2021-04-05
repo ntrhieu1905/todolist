@@ -22,11 +22,12 @@ const AddTodo: React.FC<Props> = ({ saveTodo }) => {
         <Card.Body>
           <Form onSubmit={handleSubmit(addTodo)}>
             <Form.Group as={Row} controlId="title">
-              <Form.Label column sm="2">
+              <Form.Label column="sm" sm="2">
                 Title
               </Form.Label>
               <Col sm="10">
                 <Form.Control
+                  size="sm"
                   type="text"
                   name="title"
                   placeholder="Enter title"
@@ -36,11 +37,12 @@ const AddTodo: React.FC<Props> = ({ saveTodo }) => {
             </Form.Group>
 
             <Form.Group as={Row} controlId="content">
-              <Form.Label column sm="2">
+              <Form.Label column="sm" sm="2">
                 Content
               </Form.Label>
               <Col sm="10">
                 <Form.Control
+                  size="sm"
                   as="textarea"
                   name="content"
                   rows={3}
@@ -51,7 +53,7 @@ const AddTodo: React.FC<Props> = ({ saveTodo }) => {
             </Form.Group>
 
             <Form.Group as={Row}>
-              <Form.Label column sm="2" htmlFor="startDate">
+              <Form.Label column="sm" sm="2" htmlFor="startDate">
                 Start Date
               </Form.Label>
               <Col sm="4">
@@ -61,7 +63,7 @@ const AddTodo: React.FC<Props> = ({ saveTodo }) => {
                   defaultValue={new Date()}
                   render={({ onChange, value }) => (
                     <DatePicker
-                      className="form-control"
+                      className="form-control form-control-sm"
                       dateFormat="dd-MM-yyyy"
                       onChange={onChange}
                       selected={value}
@@ -69,7 +71,7 @@ const AddTodo: React.FC<Props> = ({ saveTodo }) => {
                   )}
                 />
               </Col>
-              <Form.Label column sm="2" htmlFor="endDate">
+              <Form.Label column="sm" sm="2" htmlFor="endDate">
                 End Date
               </Form.Label>
               <Col sm="4">
@@ -79,7 +81,7 @@ const AddTodo: React.FC<Props> = ({ saveTodo }) => {
                   defaultValue={new Date()}
                   render={({ onChange, value }) => (
                     <DatePicker
-                      className="form-control"
+                      className="form-control form-control-sm"
                       dateFormat="dd-MM-yyyy"
                       onChange={onChange}
                       selected={value}
@@ -90,7 +92,7 @@ const AddTodo: React.FC<Props> = ({ saveTodo }) => {
             </Form.Group>
             <Row>
               <Col sm="12" className="text-center">
-                <Button type="submit" variant="primary">
+                <Button type="submit" variant="primary" size="sm">
                   Save
                 </Button>
               </Col>

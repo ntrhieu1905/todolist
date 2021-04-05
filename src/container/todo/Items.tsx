@@ -15,10 +15,13 @@ const TodoItems: React.FC<Props> = ({ todos }) => {
           todos.map((todo: ITodoMain) => (
             <Card key={todo.id}>
               <Accordion.Toggle as={Card.Header} eventKey={todo.id}>
-                <div className="d-inline-block" style={{ 'width': '300px' }}>
+                <div className="d-inline-block text-break">
                   {todo.title}
                 </div>
-                <Button variant="danger" className="float-right">Delete</Button>
+                <div className="mt-2 text-right">
+                  <Button variant="danger" size="sm" className="mr-2">Delete</Button>
+                  <Button variant="success" size="sm" className="ml-2">Done</Button>
+                </div>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey={todo.id}>
                 <Card.Body>

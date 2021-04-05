@@ -1,7 +1,7 @@
 import { 
   ActionTypes,
   ITodoMain,
-  AddTodoActionType
+  TodoActionType
 } from '../../types/todo';
 import { generatedId } from '../../utils/common';
 
@@ -15,14 +15,20 @@ const initialState: TodoState = {
   isLoading: true
 }
 
-export const todoReducer = (state: TodoState = initialState, action: AddTodoActionType): TodoState => {
+export const todoReducer = (state: TodoState = initialState, action: TodoActionType): TodoState => {
   switch (action.type) {
     case ActionTypes.ADD:
       const dataTodo = {
         ...action.payload,
-        id: generatedId()
+        id: generatedId(),
+        delFlg: 0
       };
       return { ...state, isLoading: false, todos: [...state.todos, dataTodo] };
+    case ActionTypes.DELETE:
+      const todo: ITodoMain[] = state.todos.filter(
+        item => item.id !== action.payload.id
+      );
+      return { ...state, todos: todo };
     default:
       return state;
   }

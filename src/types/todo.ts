@@ -34,8 +34,8 @@ export type AddTodoType = Pick<ITodoMain,
 export type EditTodoType = Pick<ITodoMain, 'id' | 'title' | 'status' | 'updatedAt'>;
 export type DeleteTodoType = Pick<ITodoMain, 'id' | 'delFlg' | 'deletedAt'>;
 
-export interface IAddTodoAction {
-  type: ActionTypes.ADD;
-  payload: AddTodoType;
+export interface ITodoAction {
+  type: string;
+  payload: ITodoMain;
 }
-export type AddTodoActionType = IAddTodoAction;
+export type TodoActionType = ITodoAction;

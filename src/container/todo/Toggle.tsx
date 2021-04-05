@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Nav } from 'react-bootstrap';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { AddTodoType } from '../../types/todo';
 import { addTodo } from './Todo.actions';
@@ -25,12 +25,27 @@ const ListToggleTodo: React.FC = () => {
   return (
     <>
       <Row>
-        <Col md={7}>
+        <Col md={6}>
           <AddTodo saveTodo={saveTodo} />
         </Col>
-        <Col md={5}>
+        <Col md={6}>
           <Card className="mb-5" style={{ 'height': '400px' }}>
             <h5 className="text-center mt-3">Todo List Toggle</h5>
+            <Nav
+              variant="pills"
+              defaultActiveKey="assinged"
+              className="justify-content-center"
+            >
+              <Nav.Item>
+                <Nav.Link eventKey="assinged">Assinged</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="completed">Completed</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="deleted">Deleted</Nav.Link>
+              </Nav.Item>
+            </Nav>
             <Card.Body>
               {
                 !isLoading
