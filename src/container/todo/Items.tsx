@@ -3,26 +3,34 @@ import { Accordion, Card, Row, Col, Button } from 'react-bootstrap';
 import dayjs from 'dayjs';
 import { ITodoMain } from '../../types/todo';
 
+// components
+import CustomAccordionToggle from '../../components/accordion/CustomAccordionToggle';
+
 type Props = {
   todos: ITodoMain[]
 }
 
 const TodoItems: React.FC<Props> = ({ todos }) => {
+  const deleteTodoItem = (e: React.MouseEvent) => {
+    e.preventDefault();
+    alert('hello');
+  }
   return (
     <>
       <Accordion defaultActiveKey="0" style={{ 'maxHeight': '100%', 'overflowY': 'auto' }}>
         {
           todos.map((todo: ITodoMain) => (
             <Card key={todo.id}>
-              <Accordion.Toggle as={Card.Header} eventKey={todo.id}>
+              <Card.Header>
                 <div className="d-inline-block text-break">
                   {todo.title}
                 </div>
                 <div className="mt-2 text-right">
-                  <Button variant="danger" size="sm" className="mr-2">Delete</Button>
-                  <Button variant="success" size="sm" className="ml-2">Done</Button>
+                  <CustomAccordionToggle eventKey={todo.id} />
+                  <Button variant="danger" size="sm" className="mr-2" onClick={deleteTodoItem}>Delete</Button>
+                  <Button variant="success" size="sm">Done</Button>
                 </div>
-              </Accordion.Toggle>
+              </Card.Header>
               <Accordion.Collapse eventKey={todo.id}>
                 <Card.Body>
                   <Row>
