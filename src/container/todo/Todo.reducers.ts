@@ -1,7 +1,8 @@
 import { 
   ActionTypes,
   ITodoMain,
-  TodoActionType
+  TodoActionType,
+  Status
 } from '../../types/todo';
 import { generatedId } from '../../utils/common';
 
@@ -17,19 +18,30 @@ const initialState: TodoState = {
 
 export const todoReducer = (state: TodoState = initialState, action: TodoActionType): TodoState => {
   switch (action.type) {
-    case ActionTypes.ADD:
-      const dataTodo = {
+    case ActionTypes.ASSIGN:
+      const todoAdd = {
         ...action.payload,
         id: generatedId(),
-        delFlg: 0
+        status: Status.assinged
       };
-      return { ...state, isLoading: false, todos: [...state.todos, dataTodo] };
+      return { ...state, isLoading: false, todos: [...state.todos, todoAdd] };
+    case ActionTypes.COMPLETE:
+      const todoComplete = setStatus(state, action.payload.id, action.payload.status);
+      return { ...state, todos: todoComplete };
     case ActionTypes.DELETE:
-      const todo: ITodoMain[] = state.todos.filter(
-        item => item.id !== action.payload.id
-      );
-      return { ...state, todos: todo };
+      const todoDelete = setStatus(state, action.payload.id, action.payload.status);
+      return { ...state, todos: todoDelete };
     default:
       return state;
   }
+}
+
+const setStatus = (state: TodoState, id: string, status?: number) => {
+  const result = state.todos.map((val, idx, arr) => {
+    if (val.id === id) {
+      arr[idx]['status'] = status;
+    }
+    return arr[idx];
+  });
+  return result;
 }

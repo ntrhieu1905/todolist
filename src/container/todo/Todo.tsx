@@ -2,23 +2,24 @@ import React from 'react';
 import { Card, Form, Row, Col, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Controller, useForm } from 'react-hook-form';
-import { AddTodoType } from '../../types/todo';
+import { AssingedTodoType } from '../../types/todo';
 
 type Props = {
-  saveTodo: (todo: AddTodoType) => void
+  saveTodo: (todo: AssingedTodoType) => void
 }
 
-const AddTodo: React.FC<Props> = ({ saveTodo }) => {
-  const { control, register, handleSubmit } = useForm<AddTodoType>();
+const Todo: React.FC<Props> = ({ saveTodo }) => {
+  const { control, register, handleSubmit, reset } = useForm<AssingedTodoType>();
 
-  const addTodo = (data: AddTodoType) => {
+  const addTodo = (data: AssingedTodoType) => {
     saveTodo(data);
+    reset({});
   }
 
   return (
     <>
       <Card>
-        <h5 className="text-center mt-3">Add Todo</h5>
+        <h5 className="text-center mt-3">Todo Form</h5>
         <Card.Body>
           <Form onSubmit={handleSubmit(addTodo)}>
             <Form.Group as={Row} controlId="title">
@@ -104,4 +105,4 @@ const AddTodo: React.FC<Props> = ({ saveTodo }) => {
   );
 };
 
-export default AddTodo;
+export default Todo;

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Button, AccordionContext, useAccordionToggle } from 'react-bootstrap';
 
 type Props = {
@@ -14,12 +14,17 @@ const CustomAccordionToggle: React.FC<Props> = ({ eventKey, callback }) => {
   const isCurrentEventKey = currentEventKey === eventKey;
 
   return (
-    <Button variant="warning" size="sm" className="mr-2" onClick={toggleOnClick}>
+    <Button
+      variant="warning"
+      size="sm"
+      className="mr-2"
+      onClick={toggleOnClick}
+    >
       {
         isCurrentEventKey ? 'Collapse' : 'Expand'
       }
     </Button>
-  ); 
+  );
 }
 
 export default CustomAccordionToggle;

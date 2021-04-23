@@ -1,20 +1,18 @@
-import { commonField } from './common';
-
 export enum ActionTypes {
-  ADD = 'ADD',
-  ADD_ERROR = 'ADD_ERROR',
-  EDIT = 'EDIT',
+  ASSIGN = 'ADD',
+  COMPLETE = 'COMPLETE',
   DELETE = 'DELETE',
   FILTER = 'FILTER'
 }
 
 export enum Status {
-  new = 0,
-  pending = 1,
-  completed = 2,
+  assinged = 0,
+  completed = 1,
+  deleted = 2,
 }
 
-export interface ITodoMain extends commonField {
+export interface ITodoMain {
+  id: string;
   title: string;
   content: string;
   status?: Status;
@@ -22,17 +20,9 @@ export interface ITodoMain extends commonField {
   endDate: Date | string;
 }
 
-export type AddTodoType = Pick<ITodoMain,
-  'id' |
-  'title' |
-  'content' |
-  'status' |
-  'startDate' |
-  'endDate' |
-  'createdAt'
->;
-export type EditTodoType = Pick<ITodoMain, 'id' | 'title' | 'status' | 'updatedAt'>;
-export type DeleteTodoType = Pick<ITodoMain, 'id' | 'delFlg' | 'deletedAt'>;
+export type AssingedTodoType = ITodoMain;
+export type CompletedTodoType = Pick<ITodoMain, 'id' | 'status'>;
+export type DeletedTodoType = Pick<ITodoMain, 'id' | 'status'>;
 
 export interface ITodoAction {
   type: string;

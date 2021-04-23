@@ -1,27 +1,37 @@
 import { ActionCreator, Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { ActionTypes, DeleteTodoType } from '../../types/todo';
+import { ActionTypes, DeletedTodoType, CompletedTodoType } from '../../types/todo';
 import { TodoState } from './Todo.reducers';
 
 export type AppThunk = ThunkAction<void, TodoState, null, Action<string>>;
 
-export const addTodo: ActionCreator<AppThunk> = data => {
+export const assignTodo: ActionCreator<AppThunk> = data => {
   return (dispatch: Dispatch) => {
     try {
       dispatch({
-        type: ActionTypes.ADD,
+        type: ActionTypes.ASSIGN,
         payload: data
       });
     } catch (err) {
-      dispatch({
-        type: ActionTypes.ADD_ERROR,
-        payload: null
-      });
+      console.log(err);
     }
   };
 }
 
-export const deleteTodo = (data: DeleteTodoType) => {
+export const completeTodo = (data: CompletedTodoType) => {
+  return (dispatch: Dispatch) => {
+    try {
+      dispatch({
+        type: ActionTypes.COMPLETE,
+        payload: data
+      });
+    } catch(err) {
+      console.log(err);
+    }
+  }
+}
+
+export const deleteTodo = (data: DeletedTodoType) => {
   return (dispatch: Dispatch) => {
     try {
       dispatch({
